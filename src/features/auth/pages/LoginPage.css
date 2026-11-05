@@ -1,0 +1,157 @@
+.login-page {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 32px 16px;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: var(--color-durazno);
+    font-family: var(--fuente);
+}
+
+/*circulo salvia y cuadrado redondeado cafe */
+.login-page::before,
+.login-page::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+}
+
+.login-page::before {
+    top: -90px;
+    right: -90px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: var(--color-salvia);
+}
+
+.login-page::after {
+    bottom: -70px;
+    left: -50px;
+    width: 220px;
+    height: 220px;
+    border-radius: 60px;
+    background-color: var(--color-cafe);
+    transform: rotate(18deg);
+}
+
+.login-page__container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 440px;
+    padding: 40px 32px 36px;
+    border: 1px solid var(--color-borde-suave);
+    border-radius: var(--forma-2xl);
+    background-color: var(--color-superficie);
+    animation: login-page-entrada 0.55s var(--resorte) both;
+}
+
+.login-page__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 22px 22px 22px 8px;
+    background-color: var(--color-cafe);
+    color: var(--color-sobre-primario);
+}
+
+.login-page__title {
+    margin: 20px 0 0;
+    color: var(--color-espresso);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    text-align: center;
+}
+
+.login-page__description {
+    margin: 10px 0 0;
+    color: var(--color-texto-suave);
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.login-page__form {
+    width: 100%;
+    margin-top: 32px;
+}
+
+/* Variante*/
+.login-page--fuerte {
+    background-color: var(--color-cafe);
+}
+
+.login-page--fuerte::before {
+    background-color: var(--color-durazno);
+}
+
+.login-page--fuerte::after {
+    background-color: var(--color-espresso);
+}
+
+/* Variante para foto */
+.login-page--foto {
+    background-color: var(--color-espresso);
+    background-image:
+        linear-gradient(rgba(33, 26, 21, 0.55), rgba(33, 26, 21, 0.55)),
+        var(--login-foto);
+    background-position: center;
+    background-size: cover;
+}
+
+.login-page--foto::before,
+.login-page--foto::after {
+    display: none;
+}
+
+@keyframes login-page-entrada {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-page__container {
+        padding: 32px 20px 28px;
+    }
+
+    .login-page__title {
+        font-size: 28px;
+    }
+
+    .login-page::before {
+        width: 220px;
+        height: 220px;
+        top: -80px;
+        right: -80px;
+    }
+
+    .login-page::after {
+        width: 160px;
+        height: 160px;
+        border-radius: 46px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .login-page__container {
+        animation: none;
+    }
+}

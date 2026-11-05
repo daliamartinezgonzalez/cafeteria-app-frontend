@@ -1,0 +1,233 @@
+.navbar {
+    --navbar-tonal: color-mix(in srgb, var(--color-cafe) 18%, var(--color-superficie));
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-cafe) 12%, transparent);
+    background-color: var(--color-superficie);
+    font-family: var(--fuente);
+}
+
+.navbar__contenido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 24px;
+}
+
+.navbar__marca {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-espresso);
+    text-decoration: none;
+}
+
+.navbar__marca:focus-visible,
+.navbar__link:focus-visible,
+.navbar__toggle:focus-visible {
+    outline: 3px solid var(--color-hielo);
+    outline-offset: 2px;
+}
+
+.navbar__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    background-color: var(--color-cafe);
+    color: var(--color-sobre-primario);
+}
+
+.navbar__nombre {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.navbar__menu {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navbar__link {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 18px;
+    border-radius: var(--forma-total);
+    color: var(--color-texto-suave);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition:
+        background-color 0.2s var(--estandar),
+        color 0.2s var(--estandar),
+        transform 0.3s var(--resorte);
+}
+
+.navbar__link:hover {
+    background-color: color-mix(in srgb, var(--color-cafe) 8%, transparent);
+    color: var(--color-espresso);
+}
+
+.navbar__link:active {
+    transform: scale(0.94);
+}
+
+.navbar__link--activo,
+.navbar__link--activo:hover {
+    background-color: var(--navbar-tonal);
+    color: var(--color-espresso);
+}
+
+.navbar__acciones {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar__toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--navbar-tonal);
+    color: var(--color-cafe);
+    cursor: pointer;
+    transition: transform 0.3s var(--resorte);
+}
+
+.navbar__toggle:active {
+    transform: scale(0.88);
+}
+
+@media (max-width: 720px) {
+    .navbar__contenido {
+        padding: 10px 16px;
+    }
+
+    .navbar__toggle {
+        display: flex;
+    }
+
+    .navbar__menu {
+        position: absolute;
+        top: 100%;
+        right: 16px;
+        left: 16px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        margin-top: 8px;
+        padding: 12px;
+        border: 1px solid var(--color-borde-suave);
+        border-radius: var(--forma-xl);
+        background-color: var(--color-superficie);
+    }
+
+    .navbar__menu--abierto {
+        display: flex;
+        animation: navbar-abrir 0.3s var(--resorte) both;
+    }
+
+    .navbar__links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .navbar__link {
+        min-height: 48px;
+    }
+
+    .navbar__acciones {
+        justify-content: stretch;
+        padding-top: 8px;
+    }
+}
+
+/* Botón o enlace de acción (Ingresar, Salir) para usar dentro de las acciones del Navbar */
+.navbar__accion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 22px;
+    gap: 8px;
+    border: none;
+    border-radius: var(--forma-total);
+    background-color: var(--color-cafe);
+    color: var(--color-sobre-primario);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background-color 0.2s var(--estandar),
+        transform 0.3s var(--resorte);
+}
+
+.navbar__accion:hover {
+    background-color: color-mix(in srgb, var(--color-cafe) 88%, white);
+}
+
+.navbar__accion:active {
+    transform: scale(0.94);
+}
+
+.navbar__accion:focus-visible {
+    outline: 3px solid var(--color-hielo);
+    outline-offset: 2px;
+}
+
+.navbar__accion--tonal {
+    background-color: var(--navbar-tonal);
+    color: var(--color-espresso);
+}
+
+.navbar__accion--tonal:hover {
+    background-color: color-mix(in srgb, var(--navbar-tonal) 85%, var(--color-cafe));
+}
+
+@keyframes navbar-abrir {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navbar__link,
+    .navbar__toggle {
+        transition: none;
+    }
+
+    .navbar__menu--abierto {
+        animation: none;
+    }
+}

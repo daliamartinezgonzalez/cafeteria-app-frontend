@@ -1,0 +1,40 @@
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: var(--color-superficie);
+    font-family: var(--fuente);
+}
+
+.main-layout__contenido {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 24px 48px;
+}
+
+/* Páginas que ocupan todo el espacio restante, sin márgenes (por ejemplo el login) */
+.main-layout__contenido--completo {
+    display: flex;
+    flex-direction: column;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-layout__contenido--completo > * {
+    flex: 1;
+    min-height: 0;
+}
+
+@media (max-width: 720px) {
+    .main-layout__contenido {
+        padding: 16px 16px 40px;
+    }
+
+    .main-layout__contenido--completo {
+        padding: 0;
+    }
+}

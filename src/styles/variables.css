@@ -1,0 +1,35 @@
+:root {
+    /* Paleta de colores */
+    --color-cafe: #8b4f2a;
+    --color-durazno: #ffdcc5;
+    --color-salvia: #d5e8c6;
+    --color-hielo: #c9e6f2;
+    --color-espresso: #211a15;
+
+    /* Derivados de la paleta */
+    --color-superficie: color-mix(in srgb, var(--color-durazno) 18%, white);
+    --color-campo: color-mix(in srgb, var(--color-durazno) 45%, white);
+    --color-texto-suave: color-mix(in srgb, var(--color-espresso) 70%, white);
+    --color-placeholder: color-mix(in srgb, var(--color-espresso) 55%, white);
+    --color-sobre-primario: #ffffff;
+    --color-borde: color-mix(in srgb, var(--color-espresso) 55%, white);
+    --color-borde-suave: color-mix(in srgb, var(--color-cafe) 25%, white);
+
+    /* Error */
+    --color-error: #b3261c;
+    --color-error-contenedor: #f9dedc;
+    --color-sobre-error-contenedor: #410e0b;
+
+    /* Formas */
+    --forma-md: 16px;
+    --forma-lg: 20px;
+    --forma-xl: 28px;
+    --forma-2xl: 36px;
+    --forma-total: 999px;
+
+    /* curva con rebote para cambios de forma y presión */
+    --resorte: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --estandar: cubic-bezier(0.2, 0, 0, 1);
+
+    --fuente: 'Roboto Flex', 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
