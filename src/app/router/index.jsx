@@ -1,8 +1,10 @@
 import { createBrowserRouter, Link, Navigate } from 'react-router-dom'
 import MainLayout from '@/shared/components/layouts/MainLayout'
-import AdminLayout from '@/shared/components/layouts/AdminLayout'
+import AdminLayoutWithPermissions from './AdminLayoutWithPermissions'
 import LoginPage from '@/features/auth/pages/LoginPage'
 import ProtectedRoute from './ProtectedRoute'
+import PermissionRoute from './PermissionRoute'
+import UsuariosPage from '@/features/usuarios/pages/UsuariosPage'
 
 const ENLACES_PUBLICOS = [
     { to: '/', label: 'Menú', end: true },
@@ -10,7 +12,6 @@ const ENLACES_PUBLICOS = [
 ]
 
 export const router = createBrowserRouter([
-    // Páginas públicas
     {
         element: (
             <MainLayout
@@ -33,32 +34,56 @@ export const router = createBrowserRouter([
             }
         ]
     },
-
-    // Zona administrativa: requiere autenticación
     {
         element: <ProtectedRoute />,
         children: [
             {
-                element: <AdminLayout />,
+                element: <AdminLayoutWithPermissions />,
                 children: [
                     {
                         path: '/admin/inicio',
-                        element: <div>Inicio de administración</div>
+                        element: (
+                            <PermissionRoute permission="inicio.ver">
+                                <div>Inicio de administración</div>
+                            </PermissionRoute>
+                        )
                     },
                     {
                         path: '/admin/bebidas',
-                        element: <div>Gestión de bebidas</div>
+                        element: (
+                            <PermissionRoute permission="bebidas.ver">
+                                <div>Gestión de bebidas</div>
+                            </PermissionRoute>
+                        )
+                    },
+                    {
+                        path: '/admin/categorias',
+                        element: (
+                            <PermissionRoute permission="categorias.ver">
+                                <div>Gestión de categorías</div>
+                            </PermissionRoute>
+                        )
+                    },
+                    {
+                        path: '/admin/ingredientes',
+                        element: (
+                            <PermissionRoute permission="ingredientes.ver">
+                                <div>Gestión de ingredientes</div>
+                            </PermissionRoute>
+                        )
                     },
                     {
                         path: '/admin/usuarios',
-                        element: <div>Gestión de usuarios</div>
+                        element: (
+                            <PermissionRoute permission="usuarios.ver">
+                                <UsuariosPage/> 
+                            </PermissionRoute>
+                        )
                     }
                 ]
             }
         ]
     },
-
-    // Cualquier otra ruta vuelve al menú público
     {
         path: '*',
         element: <Navigate to="/" replace />

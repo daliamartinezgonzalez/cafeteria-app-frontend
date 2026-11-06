@@ -1,0 +1,147 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 100px;
+    border: 1px solid transparent;
+    font-family: var(--fuente);
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background-color 180ms ease,
+        color 180ms ease,
+        border-color 180ms ease,
+        border-radius 180ms var(--resorte),
+        box-shadow 180ms ease,
+        transform 180ms ease;
+}
+
+.button:focus-visible {
+    outline: 3px solid var(--color-hielo);
+    outline-offset: 3px;
+}
+
+.button:active:not(:disabled) {
+    transform: scale(0.96);
+}
+
+.button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* Tamaños */
+.button--small {
+    min-height: 36px;
+    padding: 0 16px;
+    font-size: 0.82rem;
+    border-radius: var(--forma-md);
+}
+
+.button--medium {
+    min-height: 44px;
+    padding: 0 20px;
+    font-size: 0.9rem;
+    border-radius: var(--forma-lg);
+}
+
+.button--large {
+    min-height: 52px;
+    padding: 0 24px;
+    font-size: 1rem;
+    border-radius: var(--forma-xl);
+}
+
+/* Variante principal */
+.button--filled {
+    color: var(--color-sobre-primario);
+    background-color: var(--color-cafe);
+}
+
+.button--filled:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--color-cafe) 85%, var(--color-espresso));
+    border-radius: var(--forma-md);
+    box-shadow: 0 3px 8px color-mix(in srgb, var(--color-espresso) 16%, transparent);
+}
+
+/* Variante tonal */
+.button--tonal {
+    color: var(--color-espresso);
+    background-color: var(--color-salvia);
+}
+
+.button--tonal:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--color-salvia) 75%, var(--color-cafe));
+    border-radius: var(--forma-md);
+}
+
+/* Variante outlined */
+.button--outlined {
+    color: var(--color-cafe);
+    background-color: transparent;
+    border-color: var(--color-borde);
+}
+
+.button--outlined:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--color-durazno) 30%, transparent);
+    border-color: var(--color-cafe);
+}
+
+/* Variante text */
+.button--text {
+    min-width: auto;
+    color: var(--color-cafe);
+    background-color: transparent;
+}
+
+.button--text:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--color-durazno) 40%, transparent);
+}
+
+/* Variante de peligro */
+.button--danger {
+    color: var(--color-error);
+    background-color: var(--color-error-contenedor);
+}
+
+.button--danger:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--color-error-contenedor) 75%, var(--color-error));
+    border-radius: var(--forma-md);
+}
+
+/* Iconos */
+.button__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.button__label {
+    white-space: nowrap;
+}
+
+/* Indicador de carga */
+.button__spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: button-spin 700ms linear infinite;
+}
+
+@keyframes button-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .button,
+    .button__spinner {
+        animation: none;
+        transition: none;
+    }
+}

@@ -1,0 +1,8 @@
+.usuarios-page {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.usuarios-page .page-header {
+    margin-bottom: 20px;
+}

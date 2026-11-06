@@ -1,0 +1,173 @@
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 32px;
+    padding: 16px 24px;
+    font-family: var(--fuente);
+}
+
+.pagination__summary {
+    margin: 0;
+    color: var(--color-sobre-superficie-variante);
+    font-size: 13px;
+}
+
+.pagination__page-size {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pagination__page-size-label {
+    color: var(--color-sobre-superficie-variante);
+    font-size: 13px;
+}
+
+.pagination__select {
+    min-width: 72px;
+    min-height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--color-contorno);
+    border-radius: var(--forma-lg);
+    background-color: var(--color-superficie);
+    color: var(--color-sobre-superficie);
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.2s var(--estandar);
+}
+
+.pagination__select:hover {
+    border-color: var(--color-espresso);
+}
+
+.pagination__select:focus-visible,
+.pagination__button:focus-visible,
+.pagination__page:focus-visible {
+    outline: 3px solid var(--color-hielo);
+    outline-offset: 2px;
+}
+
+/* Anterior, números y Siguiente */
+.pagination__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.pagination__button {
+    min-height: 40px;
+    padding: 0 18px;
+    border: none;
+    border-radius: var(--forma-total);
+    background-color: var(--color-contenedor-secundario);
+    color: var(--color-sobre-contenedor-secundario);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background-color 0.2s var(--estandar),
+        transform 0.3s var(--resorte);
+}
+
+.pagination__button:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--color-contenedor-secundario) 80%, var(--color-primario));
+}
+
+.pagination__button:active:not(:disabled) {
+    transform: scale(0.94);
+}
+
+.pagination__button:disabled {
+    background-color: transparent;
+    color: color-mix(in srgb, var(--color-espresso) 38%, white);
+    cursor: not-allowed;
+}
+
+.pagination__pages {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Páginas circulares; la activa cambia a una forma redondeada y se rellena */
+.pagination__page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 8px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--color-sobre-superficie-variante);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+        background-color 0.2s var(--estandar),
+        color 0.2s var(--estandar),
+        border-radius 0.35s var(--resorte),
+        transform 0.3s var(--resorte);
+}
+
+.pagination__page:hover:not(.pagination__page--active) {
+    background-color: var(--color-contenedor-secundario);
+    color: var(--color-sobre-contenedor-secundario);
+}
+
+.pagination__page:active {
+    transform: scale(0.9);
+}
+
+.pagination__page--active {
+    border-radius: var(--forma-md);
+    background-color: var(--color-primario);
+    color: var(--color-sobre-primario);
+}
+
+.pagination__ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    color: var(--color-sobre-superficie-variante);
+    font-size: 13px;
+}
+
+/* Móvil: los números arriba y Anterior / Siguiente debajo */
+@media (max-width: 640px) {
+    .pagination {
+        justify-content: center;
+        padding: 16px;
+        text-align: center;
+    }
+
+    .pagination__pages {
+        order: -1;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .pagination__page {
+        min-width: 36px;
+        height: 36px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pagination__select,
+    .pagination__button,
+    .pagination__page {
+        transition: none;
+    }
+}

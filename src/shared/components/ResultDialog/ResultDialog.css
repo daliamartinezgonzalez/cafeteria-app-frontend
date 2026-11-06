@@ -1,0 +1,40 @@
+.result-dialog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.result-dialog__icon {
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    border-radius: var(--forma-total);
+}
+
+.result-dialog__icon--success {
+    color: var(--color-espresso);
+    background-color: var(--color-salvia);
+}
+
+.result-dialog__icon--error {
+    color: var(--color-error);
+    background-color: var(--color-error-contenedor);
+}
+
+.result-dialog__message {
+    max-width: 380px;
+    margin: 0;
+    color: var(--color-texto-suave);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.result-dialog__actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 8px;
+}

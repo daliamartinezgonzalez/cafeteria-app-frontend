@@ -1,0 +1,42 @@
+.page-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: var(--fuente);
+}
+
+.page-header__text {
+    min-width: 0;
+}
+
+.page-header__title {
+    margin: 0;
+    color: var(--color-espresso);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+}
+
+.page-header__subtitle {
+    margin-top: 4px;
+    color: var(--color-texto-suave);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        align-items: stretch;
+    }
+
+    .page-header__title {
+        font-size: 28px;
+    }
+
+    .page-header > button {
+        width: 100%;
+    }
+}

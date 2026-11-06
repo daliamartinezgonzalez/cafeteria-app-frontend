@@ -1,0 +1,81 @@
+
+.select-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.select-field__label {
+    padding-left: 4px;
+    color: var(--color-espresso);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.select-field__control-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select-field__control {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 44px 0 16px;
+    color: var(--color-espresso);
+    font: inherit;
+    font-size: 0.95rem;
+    background-color: var(--color-campo);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--forma-lg);
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    transition:
+        border-color 180ms ease,
+        background-color 180ms ease,
+        box-shadow 180ms ease,
+        border-radius 180ms var(--resorte);
+}
+
+.select-field__control:hover {
+    border-color: var(--color-cafe);
+}
+
+.select-field__control:focus {
+    background-color: white;
+    border-color: var(--color-cafe);
+    border-radius: var(--forma-md);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-cafe) 16%, transparent);
+}
+
+.select-field__control[aria-invalid="true"] {
+    border-color: var(--color-error);
+}
+
+.select-field__control:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.select-field__icon {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    color: var(--color-cafe);
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.select-field__error {
+    padding-left: 4px;
+    color: var(--color-error);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .select-field__control {
+        transition: none;
+    }
+}
