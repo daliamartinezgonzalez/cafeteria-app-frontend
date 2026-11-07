@@ -22,13 +22,13 @@ export default function IngredienteForm({
             esEdicion ? editarIngredienteSchema : crearIngredienteSchema
         ),
         defaultValues: {
-            nombre_ingrediente: ''
+            nombre: ''
         }
     })
 
     useEffect(() => {
         reset({
-            nombre_ingrediente: ingrediente?.nombre_ingrediente ?? ''
+            nombre: ingrediente?.nombre ?? ''
         })
     }, [ingrediente, reset])
 
@@ -44,12 +44,12 @@ export default function IngredienteForm({
         >
             <Input
                 label="Nombre del ingrediente"
-                id="nombre_ingrediente"
+                id="nombre"
                 type="text"
                 autoComplete="off"
                 disabled={isPending}
-                error={errors.nombre_ingrediente?.message}
-                {...register('nombre_ingrediente')}
+                error={errors.nombre?.message}
+                {...register('nombre')}
             />
         </form>
     )
