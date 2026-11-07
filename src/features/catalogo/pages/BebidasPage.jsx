@@ -8,6 +8,7 @@ import Button from '@/shared/components/Button/Button'
 import ConfirmDialog from '@/shared/components/ConfirmDialog/ConfirmDialog'
 import ResultDialog from '@/shared/components/ResultDialog/ResultDialog'
 import Footer from '@/shared/components/Footer/Footer'
+import Pagination from '@/shared/components/Paginatation/Pagination'
 
 import CafeCard from '../components/targeta/CafeCard'
 import BebidaForm from '../components/form/BebidaForm'
@@ -32,6 +33,10 @@ export default function BebidasPage() {
         titulo: '',
         mensaje: ''
     })
+
+    // estados para controlar la paginación
+    const [paginaActual, setPaginaActual] = useState(1)
+    const [pageSize, setPageSize] = useState(10)
 
     // obtiene la categoría seleccionada desde los parámetros de la URL
     const categoriaSeleccionada = searchParams.get('categoria') ?? ''
@@ -78,6 +83,15 @@ export default function BebidasPage() {
             return String(idCategoria) === categoriaSeleccionada
         })
         : bebidas
+
+    // calcula el total de páginas según las bebidas filtradas
+    const totalPaginas = Math.ceil(bebidasFiltradas.length / pageSize)
+
+    // obtiene las bebidas correspondientes a la página actual
+    const bebidasPaginadas = bebidasFiltradas.slice(
+        (paginaActual - 1) * pageSize,
+        paginaActual * pageSize
+    )
 
     // abre el modal para registrar una nueva bebida
     const abrirModalCrear = () => {
@@ -293,6 +307,8 @@ export default function BebidasPage() {
                             value={categoriaSeleccionada}
                             options={opcionesCategorias}
                             onChange={(valor) => {
+                                setPaginaActual(1)
+
                                 if (valor) {
                                     setSearchParams({ categoria: valor })
                                 } else {
@@ -313,24 +329,39 @@ export default function BebidasPage() {
                             No hay bebidas registradas en esta categoría.
                         </p>
                     ) : (
-                        // recorre las bebidas filtradas y muestra una tarjeta por cada una
-                        <div className="bebidas-page__grid">
-                            {bebidasFiltradas.map((bebida) => (
-                                <CafeCard
-                                    key={bebida.id}
-                                    nombre={bebida.nombre}
-                                    categoria={bebida.categoria?.nombre_categoria ?? 'Sin categoría'}
-                                    descripcion={bebida.descripcion ?? ''}
-                                    precio={bebida.precio}
-                                    imagen={bebida.imagen_url}
-                                    ingredientes={bebida.ingredientes ?? []}
-                                    puedeEditar={puedeEditar}
-                                    puedeEliminar={puedeEliminar}
-                                    onEditar={() => abrirModalEditar(bebida)}
-                                    onEliminar={() => abrirConfirmacionEliminar(bebida)}
-                                />
-                            ))}
-                        </div>
+                        <>
+                            {/* muestra las bebidas correspondientes a la página actual */}
+                            <div className="bebidas-page__grid">
+                                {bebidasPaginadas.map((bebida) => (
+                                    <CafeCard
+                                        key={bebida.id}
+                                        nombre={bebida.nombre}
+                                        categoria={bebida.categoria?.nombre_categoria ?? 'Sin categoría'}
+                                        descripcion={bebida.descripcion ?? ''}
+                                        precio={bebida.precio}
+                                        imagen={bebida.imagen_url}
+                                        ingredientes={bebida.ingredientes ?? []}
+                                        puedeEditar={puedeEditar}
+                                        puedeEliminar={puedeEliminar}
+                                        onEditar={() => abrirModalEditar(bebida)}
+                                        onEliminar={() => abrirConfirmacionEliminar(bebida)}
+                                    />
+                                ))}
+                            </div>
+
+                            {/* controles de paginación */}
+                            <Pagination
+                                totalRegistros={bebidasFiltradas.length}
+                                paginaActual={paginaActual}
+                                totalPaginas={totalPaginas}
+                                pageSize={pageSize}
+                                onPageChange={setPaginaActual}
+                                onPageSizeChange={(cantidad) => {
+                                    setPageSize(cantidad)
+                                    setPaginaActual(1)
+                                }}
+                            />
+                        </>
                     )}
                 </div>
 
