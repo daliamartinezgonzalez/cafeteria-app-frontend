@@ -97,6 +97,78 @@ Se busca mantener una interfaz sencilla, organizada y adaptable a diferentes tam
 
 El desarrollo se administra mediante Git y GitHub, utilizando commits descriptivos para identificar las funcionalidades implementadas y los cambios realizados.
 
-## Autor
+## Estructura del proyecto
 
-Dalia Eunice Martínez González
+El frontend está organizado por funcionalidades para separar las páginas, componentes, servicios y lógica de la aplicación.
+
+Entre las principales carpetas se encuentran:
+
+- `src/`: contiene el código principal de la aplicación.
+- `components/`: componentes reutilizables de la interfaz.
+- `pages/`: páginas correspondientes a las diferentes secciones.
+- `services/`: funciones para realizar solicitudes al backend.
+- `stores/`: administración del estado global mediante Zustand.
+- `hooks/`: hooks personalizados para reutilizar lógica.
+- `routes/`: configuración y organización de las rutas de navegación.
+
+Esta estructura permite mantener una mejor organización del código y facilita la incorporación de nuevas funcionalidades.
+
+## Rutas principales
+
+La aplicación utiliza React Router para gestionar la navegación entre las diferentes páginas.
+
+### Sección pública
+
+| Ruta | Descripción |
+|---|---|
+| `/` | Página principal del catálogo |
+| `/recetas` | Sección de recetas |
+| `/nosotros` | Información sobre la cafetería |
+| `/login` | Inicio de sesión |
+
+### Sección administrativa
+
+| Ruta | Descripción |
+|---|---|
+| `/admin/inicio` | Página principal del administrador |
+| `/admin/bebidas` | Administración de bebidas |
+| `/admin/categorias` | Administración de categorías |
+| `/admin/usuarios` | Administración de usuarios |
+
+Las rutas administrativas requieren autenticación y validación de los permisos correspondientes para permitir el acceso a cada sección.
+
+## Componentes reutilizables
+
+Se desarrollaron componentes compartidos para evitar repetir código y mantener una apariencia consistente en las diferentes páginas.
+
+Entre ellos se encuentran:
+
+- `Button`: botones con estilos y variantes reutilizables.
+- `Input`: campos de entrada de información.
+- `Select`: campos para seleccionar opciones.
+- `Modal`: ventanas para mostrar formularios y contenido adicional.
+- `ConfirmDialog`: ventanas para solicitar confirmación antes de realizar una acción.
+- `ResultDialog`: mensajes para informar el resultado de una operación.
+- `DataTable`: componente para mostrar información en tablas.
+- `PageHeader`: encabezado para las diferentes páginas.
+- `Pagination`: navegación entre páginas de registros.
+
+Estos componentes permiten reutilizar elementos de la interfaz y mantener una estructura uniforme.
+
+## Manejo de autenticación y permisos
+
+La autenticación se administra mediante Zustand, que permite mantener disponible la información del usuario durante la navegación.
+
+Después de iniciar sesión, el frontend utiliza el token JWT proporcionado por el backend para realizar solicitudes que requieren autenticación.
+
+Además, se utiliza la información de los permisos del usuario para controlar el acceso a las diferentes secciones y acciones administrativas.
+
+La validación de permisos en el frontend complementa las verificaciones realizadas por el backend, que es el encargado de autorizar las operaciones protegidas.
+
+## Comandos disponibles
+
+Para ejecutar el proyecto en modo desarrollo:
+
+```bash
+pnpm dev
+
