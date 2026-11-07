@@ -1,0 +1,265 @@
+/* estilos principales de la tarjeta de café */
+.cafe-card {
+    --cc-fondo: var(--color-campo);
+    --cc-cabecera: var(--color-durazno);
+    --cc-boton: color-mix(in srgb, var(--color-durazno) 55%, var(--color-campo));
+    --cc-boton-hover: color-mix(in srgb, var(--color-durazno) 85%, var(--color-cafe) 15%);
+
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    border-radius: var(--forma-xl);
+    background: var(--cc-fondo);
+    color: var(--color-espresso);
+    font-family: var(--fuente);
+}
+
+/* variantes de color para la cabecera de la tarjeta */
+.cafe-card--durazno {
+    --cc-cabecera: var(--color-durazno);
+}
+
+.cafe-card--salvia {
+    --cc-cabecera: var(--color-salvia);
+}
+
+.cafe-card--hielo {
+    --cc-cabecera: var(--color-hielo);
+}
+
+/* aplica box-sizing a todos los elementos de la tarjeta */
+.cafe-card * {
+    box-sizing: border-box;
+}
+
+/* contenedor de la imagen del café */
+.cafe-card__imagen {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 132px;
+    border-radius: var(--forma-lg);
+    background: var(--cc-cabecera);
+    color: var(--color-espresso);
+    overflow: hidden;
+}
+
+/* ajusta la imagen al tamaño del contenedor */
+.cafe-card__imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* etiqueta del precio sobre la imagen */
+.cafe-card__precio {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    padding: 5px 12px;
+    border-radius: var(--forma-total);
+    background: var(--color-sobre-primario);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* contenedor de la información del café */
+.cafe-card__cuerpo {
+    padding: 14px 8px 4px;
+}
+
+/* categoría del café */
+.cafe-card__categoria {
+    margin: 0;
+    font-size: 12px;
+    color: var(--color-texto-suave);
+}
+
+/* nombre del café */
+.cafe-card__nombre {
+    margin: 2px 0 4px;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* descripción del café */
+.cafe-card__descripcion {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--color-texto-suave);
+}
+
+/* contenedor de las acciones de la tarjeta */
+.cafe-card__acciones {
+    display: flex;
+    align-items: center;
+    padding: 14px 4px 2px;
+}
+
+/* botón para consultar la receta */
+.cafe-card__receta {
+    width: 100%;
+    height: 38px;
+    border: 0;
+    padding: 0 18px;
+    border-radius: var(--forma-total);
+    background: var(--cc-boton);
+    color: var(--color-espresso);
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    transition:
+        background 0.15s var(--estandar),
+        transform 0.25s var(--resorte);
+}
+
+/* cambia el fondo del botón al pasar el cursor */
+.cafe-card__receta:hover {
+    background: var(--cc-boton-hover);
+}
+
+/* efecto al presionar el botón */
+.cafe-card__receta:active {
+    transform: scale(0.98);
+}
+
+/* estilo del contorno al navegar con el teclado */
+.cafe-card button:focus-visible {
+    outline: 2px solid var(--color-espresso);
+    outline-offset: 2px;
+}
+
+/* modal para mostrar la receta del café */
+.cafe-card__modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+/* contenedor del contenido del modal */
+.cafe-card__modal {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    padding: 30px;
+    border-radius: var(--forma-xl);
+    background: var(--color-campo);
+    color: var(--color-espresso);
+    font-family: var(--fuente);
+}
+
+/* botón para cerrar el modal */
+.cafe-card__modal-cerrar {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--color-espresso);
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* cambia el fondo del botón al pasar el cursor */
+.cafe-card__modal-cerrar:hover {
+    background: var(--cc-boton);
+}
+
+/* título principal del modal */
+.cafe-card__modal h2 {
+    margin: 8px 0 24px;
+    font-size: 21px;
+}
+
+/* subtítulos del modal */
+.cafe-card__modal h3 {
+    margin: 0 0 12px;
+    font-size: 15px;
+}
+
+/* lista de ingredientes de la receta */
+.cafe-card__ingredientes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* distribución de cada ingrediente y su cantidad */
+.cafe-card__ingredientes li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-texto-suave);
+    font-size: 14px;
+}
+
+/* evita que las cantidades se dividan en varias líneas */
+.cafe-card__ingredientes strong {
+    white-space: nowrap;
+}
+
+/* desactiva las transiciones si el usuario prefiere movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .cafe-card__receta {
+        transition: none;
+    }
+}
+
+/* contenedor de los botones de administración */
+.cafe-card__administracion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* estilos generales de los botones de administración */
+.cafe-card__accion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--color-campo);
+    border-radius: var(--forma-lg);
+    background: transparent;
+    color: var(--color-espresso);
+    cursor: pointer;
+    transition: background 0.15s var(--estandar);
+}
+
+/* cambio de fondo del botón de editar */
+.cafe-card__accion--editar:hover {
+    background: var(--color-salvia);
+}
+
+/* color del botón de eliminar */
+.cafe-card__accion--eliminar {
+    color: #B42318;
+}
+
+/* cambio de fondo del botón de eliminar */
+.cafe-card__accion--eliminar:hover {
+    background: #FEE4E2;
+}
+
+/* estilo del contorno al navegar con el teclado */
+.cafe-card__accion:focus-visible {
+    outline: 2px solid var(--color-espresso);
+    outline-offset: 2px;
+}

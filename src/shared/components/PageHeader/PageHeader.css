@@ -41,3 +41,11 @@
         width: 100%;
     }
 }
+.page-header--center {
+    justify-content: center;
+    text-align: center;
+}
+
+.page-header--center .page-header__text {
+    width: 100%;
+}

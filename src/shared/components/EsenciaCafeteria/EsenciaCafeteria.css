@@ -1,0 +1,108 @@
+/* contenedor principal de la sección de esencia */
+.esencia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+    width: 100%;
+    padding: 70px 6%;
+}
+
+/* contenedor del encabezado de la sección */
+.esencia__header {
+    max-width: 550px;
+    text-align: center;
+}
+
+/* subtítulo de la sección */
+.esencia__subtitle {
+    color: var(--color-cafe);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* título de la sección */
+.esencia__header h2 {
+    margin: 12px 0;
+    color: var(--color-espresso);
+    font-size: 2rem;
+}
+
+/* descripción de la sección */
+.esencia__header p {
+    margin: 0;
+    color: var(--color-espresso);
+    opacity: 0.7;
+}
+
+/* contenedor de las tarjetas de esencia */
+.esencia__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* estilos principales de cada tarjeta */
+.esencia__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 24px;
+    border: 1px solid var(--color-borde-suave);
+    border-radius: var(--forma-md);
+    background: var(--color-superficie);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* efecto al pasar el cursor sobre las tarjetas */
+.esencia__card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgb(0 0 0 / 8%);
+}
+
+/* contenedor del icono de cada tarjeta */
+.esencia__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--color-salvia);
+    color: var(--color-espresso);
+}
+
+/* título de cada tarjeta */
+.esencia__card h3 {
+    margin: 0;
+    color: var(--color-espresso);
+    font-size: 1.15rem;
+}
+
+/* descripción de cada tarjeta */
+.esencia__card p {
+    margin: 0;
+    color: var(--color-espresso);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.75;
+}
+
+/* ajustes de la sección para dispositivos móviles */
+@media (max-width: 768px) {
+    /* reduce el espacio interno de la sección */
+    .esencia {
+        padding: 50px 6%;
+    }
+
+    /* muestra las tarjetas en una sola columna */
+    .esencia__grid {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+    }
+}

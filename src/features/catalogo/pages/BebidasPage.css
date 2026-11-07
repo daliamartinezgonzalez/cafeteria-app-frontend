@@ -1,0 +1,135 @@
+/* contenedor principal de la página de bebidas */
+.bebidas-page {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+
+/* espacio inferior del encabezado de la página */
+.bebidas-page .page-header {
+    margin-bottom: 20px;
+}
+
+/* distribución de las tarjetas de bebidas */
+.bebidas-page__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+    width: 100%;
+}
+
+/* contenedor de los filtros */
+.bebidas-page__filtros {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+/* ancho del selector de filtros */
+.bebidas-page__filtros .filter-select {
+    width: 220px;
+}
+
+/* sección principal de presentación de bebidas */
+.bebidas-page__hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+    padding: 48px;
+    border-radius: var(--forma-xl);
+    background: var(--color-cream, #F5F0E8);
+    text-align: center;
+}
+
+/* contenedor del contenido de presentación */
+.bebidas-page__hero-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 520px;
+}
+
+/* etiqueta de la sección de presentación */
+.bebidas-page__hero-etiqueta {
+    margin-bottom: 12px;
+    color: var(--color-cafe);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* título de la sección de presentación */
+.bebidas-page__hero-contenido h2 {
+    margin-bottom: 12px;
+    color: var(--color-espresso);
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
+}
+
+/* descripción de la sección de presentación */
+.bebidas-page__hero-contenido > p:not(.bebidas-page__hero-etiqueta) {
+    margin-bottom: 24px;
+    color: var(--color-texto-suave);
+    line-height: 1.6;
+}
+
+/* botón de la sección de presentación */
+.bebidas-page__hero-boton {
+    padding: 12px 22px;
+    border: none;
+    border-radius: var(--forma-total);
+    background: var(--color-cafe);
+    color: white;
+    font-family: var(--fuente);
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+/* efecto al pasar el cursor sobre el botón */
+.bebidas-page__hero-boton:hover {
+    opacity: 0.85;
+}
+
+/* contenedor del catálogo de bebidas */
+.bebidas-page__catalogo {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 40px;
+    scroll-margin-top: 24px;
+}
+
+/* ajustes de espaciado para dispositivos móviles */
+@media (max-width: 600px) {
+    .bebidas-page__catalogo {
+        padding: 0 16px;
+    }
+}
+
+/* ajustes de tamaño y espaciado de la presentación en móviles */
+@media (max-width: 600px) {
+    .bebidas-page__hero {
+        min-height: 240px;
+        padding: 28px 22px;
+    }
+}
+
+/* hace que el filtro ocupe todo el ancho en pantallas pequeñas */
+@media (max-width: 480px) {
+    .bebidas-page__filtros .filter-select {
+        width: 100%;
+    }
+}
+
+/* espacio superior al desplazarse hacia las secciones */
+#catalogo-bebidas,
+#nosotros {
+    scroll-margin-top: 90px;
+}
+
+/* activa el desplazamiento suave en la página */
+html {
+    scroll-behavior: smooth;
+}

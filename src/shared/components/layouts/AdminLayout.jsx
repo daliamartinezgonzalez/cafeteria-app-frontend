@@ -10,7 +10,7 @@ const ENLACES_ADMIN = [
     { to: '/admin/usuarios', label: 'Usuarios' }
 ]
 
-export default function AdminLayout() {
+export default function AdminLayout({ links = ENLACES_ADMIN }) {
     const navigate = useNavigate()
     const logout = useAuthStore((state) => state.logout)
 
@@ -21,7 +21,7 @@ export default function AdminLayout() {
 
     return (
         <MainLayout
-            links={ENLACES_ADMIN}
+            links={links}
             acciones={
                 <button
                     type="button"

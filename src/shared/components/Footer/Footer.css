@@ -1,0 +1,199 @@
+/* contenedor principal del footer */
+.footer {
+    width: 100%;
+    background-color: var(--color-espresso);
+    color: var(--color-durazno);
+    font-family: var(--fuente);
+}
+
+/* contenedor del contenido del footer */
+.footer__content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr);
+    gap: 48px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 40px 40px;
+}
+
+/* contenedor de la marca, redes sociales y texto legal */
+.footer__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+/* estilos del enlace del logo */
+.footer__logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-durazno);
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* contenedor del icono del logo */
+.footer__logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 14px 14px 14px 6px;
+    background-color: var(--color-salvia);
+    color: var(--color-espresso);
+}
+
+/* descripción de la marca */
+.footer__description {
+    max-width: 320px;
+    margin: 0;
+    color: var(--color-durazno);
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+/* contenedor de los enlaces a redes sociales */
+.footer__social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* estilos de los enlaces a redes sociales */
+.footer__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background-color: var(--color-salvia);
+    color: var(--color-espresso);
+    transition:
+        border-radius 0.35s var(--resorte),
+        transform 0.35s var(--resorte),
+        background-color 0.2s var(--estandar);
+}
+
+/* efecto al pasar el cursor sobre los enlaces sociales */
+.footer__social-link:hover {
+    border-radius: 50%;
+    background-color: var(--color-durazno);
+}
+
+/* efecto al presionar un enlace social */
+.footer__social-link:active {
+    transform: scale(0.9);
+}
+
+/* contorno de los elementos al navegar con el teclado */
+.footer__social-link:focus-visible,
+.footer__link:focus-visible,
+.footer__logo:focus-visible {
+    outline: 3px solid var(--color-hielo);
+    outline-offset: 3px;
+}
+
+/* texto de información legal */
+.footer__legal {
+    margin: 0;
+    color: var(--color-durazno);
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0.65;
+}
+
+/* contenedor de las columnas de enlaces */
+.footer__columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 32px;
+}
+
+/* títulos de las columnas */
+.footer__title {
+    margin: 0 0 16px;
+    color: var(--color-durazno);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* línea decorativa debajo de cada título */
+.footer__title::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    margin-bottom: 14px;
+    border-radius: var(--forma-total);
+    background-color: var(--color-salvia);
+}
+
+/* lista de enlaces de cada columna */
+.footer__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* estilos de los enlaces del footer */
+.footer__link {
+    color: var(--color-durazno);
+    font-size: 14px;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: color 0.2s var(--estandar);
+}
+
+/* efecto al pasar el cursor sobre los enlaces */
+.footer__link:hover {
+    color: var(--color-salvia);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* ajustes de distribución para pantallas medianas */
+@media (max-width: 900px) {
+    .footer__content {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+}
+
+/* ajustes de espaciado y columnas para dispositivos móviles */
+@media (max-width: 600px) {
+    .footer__content {
+        padding: 40px 24px 32px;
+    }
+
+    .footer__columns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* muestra las columnas en una sola columna en pantallas pequeñas */
+@media (max-width: 350px) {
+    .footer__columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* desactiva las transiciones si el usuario prefiere movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .footer__social-link,
+    .footer__link {
+        transition: none;
+    }
+}

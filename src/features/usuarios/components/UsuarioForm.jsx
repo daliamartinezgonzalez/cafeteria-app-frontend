@@ -104,7 +104,7 @@ export default function UsuarioForm({
                 error={errors.email?.message}
                 {...register('email')}
             />
-{/* 
+
             <Input
                 label={`Contraseña ${esEdicion ? '(opcional)' : ''}`}
                 id="password"
@@ -119,7 +119,7 @@ export default function UsuarioForm({
                 error={errors.password?.message}
                 {...register('password')}
             />
-*/}
+
             <Select
                 label="Rol"
                 id="id_rol"

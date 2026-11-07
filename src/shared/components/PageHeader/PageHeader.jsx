@@ -7,10 +7,11 @@ export default function PageHeader({
     onButtonClick,
     buttonIcon,
     showButton = true,
+    align = 'left',
     children
 }) {
     return (
-        <header className="page-header">
+        <header className={`page-header page-header--${align}`}>
             <div className="page-header__text">
                 <h1 className="page-header__title">{title}</h1>
 

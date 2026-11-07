@@ -2,9 +2,10 @@ import AdminLayout from '@/shared/components/layouts/AdminLayout'
 import { usePermissions } from '@/features/auth/hooks/usePermissions'
 
 export default function AdminLayoutWithPermissions() {
-    // permite leer los permisos 
+    // permite leer los permisos
     const { hasPermission } = usePermissions()
-    // a lo que tiene acceso el usuario segun sus permisos
+
+    // enlaces disponibles para el panel administrativo
     const enlaces = [
         { to: '/admin/inicio', label: 'Inicio' },
         { to: '/admin/bebidas', label: 'Bebidas', permission: 'bebidas.ver' },
@@ -13,8 +14,9 @@ export default function AdminLayoutWithPermissions() {
         { to: '/admin/usuarios', label: 'Usuarios', permission: 'usuarios.ver' }
     ]
 
+    // muestra los enlaces que no requieren permiso o cuyo permiso está asignado al usuario
     const enlacesPermitidos = enlaces.filter(
-        (enlace) => hasPermission(enlace.permission)
+        (enlace) => !enlace.permission || hasPermission(enlace.permission)
     )
 
     return <AdminLayout links={enlacesPermitidos} />

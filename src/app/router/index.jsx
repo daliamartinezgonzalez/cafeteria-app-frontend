@@ -8,10 +8,11 @@ import UsuariosPage from '@/features/usuarios/pages/UsuariosPage'
 import CategoriasPage from '@/features/categorias/pages/CategoriasPage'
 import IngredientesPage from '@/features/ingredientes/pages/IngredientesPage'
 import InicioPage from '@/features/inicio/InicioPage'
+import BebidasPage from '@/features/catalogo/pages/BebidasPage'
 
 const ENLACES_PUBLICOS = [
-    { to: '/', label: 'Menú', end: true },
-    { to: '/nosotros', label: 'Nosotros' }
+    { to: '/#catalogo-bebidas', label: 'Menú' },
+    { to: '/#nosotros', label: 'Nosotros' }
 ]
 
 export const router = createBrowserRouter([
@@ -27,9 +28,15 @@ export const router = createBrowserRouter([
             />
         ),
         children: [
-            { path: '/', element: <div>Menú de bebidas</div> },
-            { path: '/recetas', element: <div>Recetas</div> },
-            { path: '/nosotros', element: <div>Nosotros</div> },
+            {
+                path: '/',
+                handle: { anchoCompleto: true },
+                element: <BebidasPage />
+            },
+            {
+                path: '/recetas',
+                element: <BebidasPage />
+            },
             {
                 path: '/login',
                 handle: { anchoCompleto: true },
@@ -55,7 +62,7 @@ export const router = createBrowserRouter([
                         path: '/admin/bebidas',
                         element: (
                             <PermissionRoute permission="bebidas.ver">
-                                <div>Gestión de bebidas</div>
+                                <BebidasPage />
                             </PermissionRoute>
                         )
                     },
@@ -63,7 +70,7 @@ export const router = createBrowserRouter([
                         path: '/admin/categorias',
                         element: (
                             <PermissionRoute permission="categorias.ver">
-                                <CategoriasPage/>
+                                <CategoriasPage />
                             </PermissionRoute>
                         )
                     },
@@ -71,7 +78,7 @@ export const router = createBrowserRouter([
                         path: '/admin/ingredientes',
                         element: (
                             <PermissionRoute permission="ingredientes.ver">
-                                <IngredientesPage/>
+                                <IngredientesPage />
                             </PermissionRoute>
                         )
                     },
@@ -79,7 +86,7 @@ export const router = createBrowserRouter([
                         path: '/admin/usuarios',
                         element: (
                             <PermissionRoute permission="usuarios.ver">
-                                <UsuariosPage/> 
+                                <UsuariosPage />
                             </PermissionRoute>
                         )
                     }

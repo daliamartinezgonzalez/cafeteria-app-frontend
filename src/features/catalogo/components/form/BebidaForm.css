@@ -1,0 +1,114 @@
+/* contenedor principal del formulario de bebidas */
+.bebida-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+}
+
+/* contenedor de la sección de ingredientes */
+.bebida-form__ingredientes {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+/* encabezado de la sección de ingredientes */
+.bebida-form__ingredientes-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* título de la sección de ingredientes */
+.bebida-form__ingredientes-header h3 {
+    margin: 0;
+    color: var(--color-espresso);
+    font-size: 1rem;
+}
+
+/* botón para agregar ingredientes */
+.bebida-form__agregar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: 1px solid var(--color-campo);
+    border-radius: var(--forma-lg);
+    background: transparent;
+    color: var(--color-espresso);
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+/* cambio de fondo al pasar el cursor */
+.bebida-form__agregar:hover {
+    background: var(--color-salvia);
+}
+
+/* distribución de los campos de cada ingrediente */
+.bebida-form__ingrediente {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) 36px;
+    align-items: end;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid var(--color-campo);
+    border-radius: var(--forma-lg);
+}
+
+/* botón para eliminar un ingrediente */
+.bebida-form__eliminar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 2px;
+    border: 1px solid var(--color-campo);
+    border-radius: var(--forma-lg);
+    background: transparent;
+    color: #B42318;
+    cursor: pointer;
+}
+
+/* cambio de fondo al pasar el cursor */
+.bebida-form__eliminar:hover {
+    background: #FEE4E2;
+}
+
+/* estilos para los botones cuando están deshabilitados */
+.bebida-form__agregar:disabled,
+.bebida-form__eliminar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* mensaje de error del formulario */
+.bebida-form__error {
+    margin: 0;
+    color: #B42318;
+    font-size: 0.85rem;
+}
+
+/* ajustes para dispositivos móviles */
+@media (max-width: 600px) {
+    /* acomoda el encabezado en columna */
+    .bebida-form__ingredientes-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    /* muestra los campos de ingredientes en una sola columna */
+    .bebida-form__ingrediente {
+        grid-template-columns: 1fr;
+    }
+
+    /* hace que el botón de eliminar ocupe todo el ancho */
+    .bebida-form__eliminar {
+        width: 100%;
+    }
+}
