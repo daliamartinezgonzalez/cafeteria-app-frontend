@@ -3,7 +3,7 @@ import { Plus } from 'lucide-react'
 import PageHeader from '@/shared/components/PageHeader/PageHeader'
 import DataTable from '@/shared/components/DataTable/DataTable'
 import './IngredientesPage.css'
-import { useIngredientes, useGuardarIngrediente } from '../hooks/useIngredientes'
+import { useIngredientes, useGuardarIngrediente, useDeleteIngrediente } from '../hooks/useIngredientes'
 import IngredienteForm from '../components/IngredienteForm'
 import { usePermissions } from '@/features/auth/hooks/usePermissions'
 import { getApiError } from '@/shared/utils/api-error'
@@ -16,6 +16,7 @@ export default function IngredientesPage() {
     // para obtener los ingredientes
     const { data: ingredientes = [], isLoading, isError } = useIngredientes()
     const guardarIngrediente = useGuardarIngrediente()
+    const eliminarIngrediente = useDeleteIngrediente()
     const { hasPermission } = usePermissions()
 
     // para controlar la paginacion
@@ -75,9 +76,18 @@ export default function IngredientesPage() {
         setModalAbierto(true)
     }
 
+    // para abrir la confirmacion de eliminar
+    const abrirConfirmacionEliminar = (ingrediente) => {
+        setAccion({
+            tipo: 'eliminar',
+            ingrediente
+        })
+    }
+
     // para cerrar el modal
     const cerrarModal = () => {
         if (guardarIngrediente.isPending) return
+
         setModalAbierto(false)
         setIngredienteSeleccionado(null)
         setDatosPendientes(null)
@@ -94,7 +104,7 @@ export default function IngredientesPage() {
         })
     }
 
-    // para mostrar el error del back en caso de que no se pueda guardar
+    // para mostrar el error del back en caso de que no se pueda guardar o eliminar
     const mostrarError = (error) => {
         const errores = getApiError(error)
 
@@ -112,6 +122,7 @@ export default function IngredientesPage() {
         )
     }
 
+    // para enviar los datos del formulario
     const enviarFormulario = (datos) => {
         setDatosPendientes(datos)
         setAccion({
@@ -120,10 +131,9 @@ export default function IngredientesPage() {
         })
     }
 
+    // para cerrar la confirmacion
     const cerrarConfirmacion = () => {
-        if (guardarIngrediente.isPending) {
-            return
-        }
+        if (accionPendiente) return
 
         setAccion(null)
 
@@ -132,6 +142,7 @@ export default function IngredientesPage() {
         }
     }
 
+    // para confirmar las acciones
     const confirmarAccion = () => {
         if (!accion) return
 
@@ -169,9 +180,33 @@ export default function IngredientesPage() {
 
             return
         }
+
+        if (tipo === 'eliminar') {
+            eliminarIngrediente.mutate(
+                ingrediente.id,
+                {
+                    onSuccess: () => {
+                        setAccion(null)
+                        eliminarIngrediente.reset()
+
+                        mostrarResultado(
+                            'success',
+                            'Ingrediente eliminado',
+                            'El ingrediente se eliminó correctamente.'
+                        )
+                    },
+                    onError: (error) => {
+                        setAccion(null)
+                        mostrarError(error)
+                    }
+                }
+            )
+        }
     }
 
-    const accionPendiente = guardarIngrediente.isPending
+    // para controlar el estado de carga de las acciones
+    const accionPendiente =
+        guardarIngrediente.isPending || eliminarIngrediente.isPending
 
     // para saber que mensaje de confirmacion mandar segun el caso
     const mensajeConfirmacion = () => {
@@ -184,6 +219,12 @@ export default function IngredientesPage() {
                 ? `¿Deseas guardar los cambios realizados en el ingrediente ${ingrediente.nombre}?`
                 : '¿Deseas registrar este nuevo ingrediente?'
         }
+
+        if (tipo === 'eliminar') {
+            return `¿Deseas eliminar el ingrediente ${ingrediente.nombre}? Esta acción no se puede deshacer.`
+        }
+
+        return ''
     }
 
     // para mostrar el estado de carga
@@ -224,6 +265,7 @@ export default function IngredientesPage() {
                 totalPages={Math.max(totalPaginas, 1)}
                 onPageChange={setPagina}
                 onEdit={puedeEditar ? abrirModalEditar : undefined}
+                onDelete={puedeEliminar ? abrirConfirmacionEliminar : undefined}
                 showActions={puedeEditar || puedeEliminar}
             />
 
@@ -272,12 +314,14 @@ export default function IngredientesPage() {
                 onClose={cerrarConfirmacion}
                 onConfirm={confirmarAccion}
                 title={
-                    accion?.ingrediente
-                        ? 'Confirmar cambios'
-                        : 'Registrar ingrediente'
+                    accion?.tipo === 'eliminar'
+                        ? 'Eliminar ingrediente'
+                        : accion?.ingrediente
+                            ? 'Confirmar cambios'
+                            : 'Registrar ingrediente'
                 }
                 message={mensajeConfirmacion()}
-                confirmText="Guardar"
+                confirmText={accion?.tipo === 'eliminar' ? 'Eliminar' : 'Guardar'}
                 variant="filled"
                 loading={accionPendiente}
             />
