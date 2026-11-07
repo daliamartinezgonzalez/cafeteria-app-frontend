@@ -7,7 +7,7 @@ import PermissionRoute from './PermissionRoute'
 import UsuariosPage from '@/features/usuarios/pages/UsuariosPage'
 import CategoriasPage from '@/features/categorias/pages/CategoriasPage'
 import IngredientesPage from '@/features/ingredientes/pages/IngredientesPage'
-
+import InicioPage from '@/features/inicio/InicioPage'
 
 const ENLACES_PUBLICOS = [
     { to: '/', label: 'Menú', end: true },
@@ -46,8 +46,8 @@ export const router = createBrowserRouter([
                     {
                         path: '/admin/inicio',
                         element: (
-                            <PermissionRoute permission="inicio.ver">
-                                <div>Inicio de administración</div>
+                            <PermissionRoute permission="bebidas.ver">
+                                <InicioPage />
                             </PermissionRoute>
                         )
                     },

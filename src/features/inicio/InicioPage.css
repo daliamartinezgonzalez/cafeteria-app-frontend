@@ -1,0 +1,133 @@
+
+.inicio-page {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    width: 100%;
+}
+
+.inicio-bienvenida {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 40px;
+    background: var(--color-cream, #F5F0E8);
+    border-radius: 18px;
+}
+
+.inicio-bienvenida__contenido {
+    max-width: 650px;
+}
+
+.inicio-bienvenida__etiqueta {
+    color: var(--color-coffee, #79553D);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.inicio-bienvenida h1 {
+    margin: 12px 0;
+    color: var(--color-espresso, #493326);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.inicio-bienvenida p {
+    margin: 0;
+    color: var(--color-text-secondary, #665448);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.inicio-bienvenida__icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    color: var(--color-coffee, #79553D);
+    background: #E9DDCE;
+    border-radius: 50%;
+}
+
+.inicio-accesos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.inicio-seccion__encabezado h2 {
+    margin: 0 0 6px;
+    color: var(--color-espresso, #493326);
+    font-size: 1.4rem;
+}
+
+.inicio-seccion__encabezado p {
+    margin: 0;
+    color: var(--color-text-secondary, #806F60);
+    font-size: 0.95rem;
+}
+
+.inicio-accesos__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.inicio-acceso {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px;
+    background: var(--color-surface, #FFFFFF);
+    border: 1px solid var(--color-border, #E8E1D9);
+    border-radius: 14px;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.inicio-acceso:hover {
+    border-color: var(--color-coffee, #79553D);
+    transform: translateY(-3px);
+}
+
+.inicio-acceso__icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    color: var(--color-coffee, #79553D);
+    background: #F5F0E8;
+    border-radius: 12px;
+}
+
+.inicio-acceso__contenido h3 {
+    margin: 0 0 5px;
+    color: var(--color-espresso, #493326);
+    font-size: 1.05rem;
+}
+
+.inicio-acceso__contenido p {
+    margin: 0;
+    color: var(--color-text-secondary, #806F60);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+    .inicio-bienvenida {
+        padding: 26px 22px;
+    }
+
+    .inicio-bienvenida__icono {
+        display: none;
+    }
+
+    .inicio-accesos__grid {
+        grid-template-columns: 1fr;
+    }
+}
