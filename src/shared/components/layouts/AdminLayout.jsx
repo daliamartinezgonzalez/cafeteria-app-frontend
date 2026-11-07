@@ -6,6 +6,7 @@ const ENLACES_ADMIN = [
     { to: '/admin/inicio', label: 'Inicio' },
     { to: '/admin/bebidas', label: 'Bebidas' },
     { to: '/admin/categorias', label: 'Categorias' },
+    { to: '/admin/ingredientes', label: 'Ingredientes' },
     { to: '/admin/usuarios', label: 'Usuarios' }
 ]
 

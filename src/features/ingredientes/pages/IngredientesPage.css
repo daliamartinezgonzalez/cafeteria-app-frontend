@@ -1,0 +1,8 @@
+.ingredientes-page {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.ingredientes-page .page-header {
+    margin-bottom: 20px;
+}

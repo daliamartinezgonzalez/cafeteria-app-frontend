@@ -6,6 +6,8 @@ import ProtectedRoute from './ProtectedRoute'
 import PermissionRoute from './PermissionRoute'
 import UsuariosPage from '@/features/usuarios/pages/UsuariosPage'
 import CategoriasPage from '@/features/categorias/pages/CategoriasPage'
+import IngredientesPage from '@/features/ingredientes/pages/IngredientesPage'
+
 
 const ENLACES_PUBLICOS = [
     { to: '/', label: 'Menú', end: true },
@@ -69,7 +71,7 @@ export const router = createBrowserRouter([
                         path: '/admin/ingredientes',
                         element: (
                             <PermissionRoute permission="ingredientes.ver">
-                                <div>Gestión de ingredientes</div>
+                                <IngredientesPage/>
                             </PermissionRoute>
                         )
                     },
