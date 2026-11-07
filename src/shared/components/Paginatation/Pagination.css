@@ -1,49 +1,59 @@
-/* contenedor principal de la paginacion */
+
+/* contenedor principal de la paginación */
 .pagination {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 16px;
     margin-top: 32px;
-    padding: 16px 24px;
+    padding: 12px 20px;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--forma-xl);
+    background-color: color-mix(in srgb, var(--color-durazno) 25%, var(--color-superficie));
     font-family: var(--fuente);
 }
+
 /* resumen de los registros mostrados */
 .pagination__summary {
     margin: 0;
-    color: var(--color-sobre-superficie-variante);
+    color: var(--color-texto-suave);
     font-size: 13px;
 }
-/* selector de registros por pagina */
+
+/* selector de registros por página */
 .pagination__page-size {
     display: flex;
     align-items: center;
     gap: 8px;
 }
+
 /* texto del selector */
 .pagination__page-size-label {
-    color: var(--color-sobre-superficie-variante);
+    color: var(--color-texto-suave);
     font-size: 13px;
 }
+
 /* campo para elegir la cantidad de registros */
 .pagination__select {
     min-width: 72px;
     min-height: 40px;
     padding: 0 12px;
-    border: 1px solid var(--color-contorno);
+    border: 1px solid var(--color-borde);
     border-radius: var(--forma-lg);
     background-color: var(--color-superficie);
-    color: var(--color-sobre-superficie);
+    color: var(--color-espresso);
     font-family: inherit;
     font-size: 14px;
     cursor: pointer;
     transition: border-color 0.2s var(--estandar);
 }
+
 /* cambia el borde al pasar el cursor */
 .pagination__select:hover {
-    border-color: var(--color-espresso);
+    border-color: var(--color-cafe);
 }
+
 /* indicador al seleccionar los controles con el teclado */
 .pagination__select:focus-visible,
 .pagination__button:focus-visible,
@@ -51,23 +61,23 @@
     outline: 3px solid var(--color-hielo);
     outline-offset: 2px;
 }
-/* contenedor de los botones de paginacion */
+
+/* contenedor de los botones de paginación */
 .pagination__controls {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    width: 100%;
 }
+
 /* botones de anterior y siguiente */
 .pagination__button {
     min-height: 40px;
     padding: 0 18px;
     border: none;
     border-radius: var(--forma-total);
-    background-color: var(--color-contenedor-secundario);
-    color: var(--color-sobre-contenedor-secundario);
+    background-color: var(--color-salvia);
+    color: var(--color-espresso);
     font-family: inherit;
     font-size: 13px;
     font-weight: 600;
@@ -76,27 +86,32 @@
         background-color 0.2s var(--estandar),
         transform 0.3s var(--resorte);
 }
+
 /* cambia el fondo al pasar el cursor */
 .pagination__button:hover:not(:disabled) {
-    background-color: color-mix(in srgb, var(--color-contenedor-secundario) 80%, var(--color-primario));
+    background-color: color-mix(in srgb, var(--color-salvia) 75%, var(--color-cafe));
 }
-/* efecto al presionar el boton */
+
+/* efecto al presionar el botón */
 .pagination__button:active:not(:disabled) {
     transform: scale(0.94);
 }
+
 /* apariencia de los botones deshabilitados */
 .pagination__button:disabled {
     background-color: transparent;
-    color: color-mix(in srgb, var(--color-espresso) 38%, white);
+    color: var(--color-placeholder);
     cursor: not-allowed;
 }
-/* contenedor de los numeros de pagina */
+
+/* contenedor de los números de página */
 .pagination__pages {
     display: flex;
     align-items: center;
     gap: 4px;
 }
-/* botones de cada pagina */
+
+/* botones de cada página */
 .pagination__page {
     display: flex;
     align-items: center;
@@ -107,7 +122,7 @@
     border: none;
     border-radius: 50%;
     background: transparent;
-    color: var(--color-sobre-superficie-variante);
+    color: var(--color-texto-suave);
     font-family: inherit;
     font-size: 13px;
     font-weight: 500;
@@ -118,49 +133,53 @@
         border-radius 0.35s var(--resorte),
         transform 0.3s var(--resorte);
 }
-/* cambia el fondo de las paginas al pasar el cursor */
+
+/* cambia el fondo de las páginas al pasar el cursor */
 .pagination__page:hover:not(.pagination__page--active) {
-    background-color: var(--color-contenedor-secundario);
-    color: var(--color-sobre-contenedor-secundario);
+    background-color: var(--color-salvia);
+    color: var(--color-espresso);
 }
-/* efecto al presionar una pagina */
+
+/* efecto al presionar una página */
 .pagination__page:active {
     transform: scale(0.9);
 }
-/* estilo de la pagina seleccionada */
+
+/* estilo de la página seleccionada */
 .pagination__page--active {
     border-radius: var(--forma-md);
-    background-color: var(--color-primario);
+    background-color: var(--color-cafe);
     color: var(--color-sobre-primario);
 }
-/* puntos que indican paginas intermedias */
+
+/* puntos que indican páginas intermedias */
 .pagination__ellipsis {
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 28px;
-    color: var(--color-sobre-superficie-variante);
+    color: var(--color-texto-suave);
     font-size: 13px;
 }
+
 /* ajustes para pantallas pequeñas */
-@media (max-width: 640px) {
+@media (max-width: 720px) {
     .pagination {
-        justify-content: center;
-        padding: 16px;
+        flex-direction: column;
+        align-items: stretch;
         text-align: center;
     }
 
-    .pagination__pages {
-        order: -1;
+    .pagination__page-size,
+    .pagination__controls {
         justify-content: center;
-        width: 100%;
     }
 
-    .pagination__page {
-        min-width: 36px;
-        height: 36px;
+    .pagination__controls {
+        flex-wrap: wrap;
     }
 }
+
 /* evita las animaciones cuando se prefiere reducir el movimiento */
 @media (prefers-reduced-motion: reduce) {
     .pagination__select,
