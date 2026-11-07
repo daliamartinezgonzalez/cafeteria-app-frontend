@@ -3,7 +3,7 @@ import { Plus } from 'lucide-react'
 import PageHeader from '@/shared/components/PageHeader/PageHeader'
 import DataTable from '@/shared/components/DataTable/DataTable'
 import './CategoriasPage.css'
-import { useCategorias, useGuardarCategoria } from '../hooks/useCategorias'
+import { useCategorias, useGuardarCategoria, useDeleteCategoria } from '../hooks/useCategorias'
 import CategoriaForm from '../components/CategoriaForm'
 import { usePermissions } from '@/features/auth/hooks/usePermissions'
 import { getApiError } from '@/shared/utils/api-error'
@@ -17,6 +17,7 @@ export default function CategoriasPage() {
     // para obtener las categorias
     const { data: categorias = [], isLoading, isError } = useCategorias()
     const guardarCategoria = useGuardarCategoria()
+    const eliminarCategoria = useDeleteCategoria()
     const { hasPermission } = usePermissions()
     // para controlar la paginacion
     const [pagina, setPagina] = useState(1)
@@ -67,6 +68,13 @@ export default function CategoriasPage() {
         setCategoriaSeleccionado(categoria)
         setModalAbierto(true)
     }
+    // para abrir la confirmacion de eliminar
+    const abrirConfirmacionEliminar = (categoria) => {
+        setAccion({
+            tipo: 'eliminar',
+            categoria
+        })
+    }
     // para cerrer el modal
     const cerrarModal = () => {
         if (guardarCategoria.isPending) return
@@ -101,7 +109,7 @@ export default function CategoriasPage() {
             mensaje || 'Ocurrió un error inesperado.'
         )
     }
-    
+
     const enviarFormulario = (datos) => {
         setDatosPendientes(datos)
         setAccion({
@@ -111,9 +119,7 @@ export default function CategoriasPage() {
     }
 
     const cerrarConfirmacion = () => {
-        if (
-            guardarCategoria.isPending
-        ) {
+        if (guardarCategoria.isPending || eliminarCategoria.isPending) {
             return
         }
 
@@ -162,10 +168,29 @@ export default function CategoriasPage() {
             return
         }
 
+        if (tipo === 'eliminar') {
+            eliminarCategoria.mutate(categoria.id, {
+                onSuccess: () => {
+                    setAccion(null)
+
+                    mostrarResultado(
+                        'success',
+                        'Categoria eliminada',
+                        `La categoria ${categoria.nombre_categoria} se eliminó correctamente.`
+                    )
+                },
+                onError: (error) => {
+                    setAccion(null)
+                    mostrarError(error)
+                }
+            })
+
+            return
+        }
     }
 
     const accionPendiente =
-        guardarCategoria.isPending
+        guardarCategoria.isPending || eliminarCategoria.isPending
     // para saber que mensaje de connfirmacion mandar segun el caso
     const mensajeConfirmacion = () => {
         if (!accion) return ''
@@ -176,6 +201,9 @@ export default function CategoriasPage() {
             return categoria
                 ? `¿Deseas guardar los cambios realizados en la categoria ${categoria.nombre_categoria}?`
                 : '¿Deseas registrar esta nueva categoria?'
+        }
+        if (tipo === 'eliminar') {
+            return `¿Deseas eliminar la categoria ${categoria.nombre_categoria}? Esta acción no se puede deshacer.`
         }
 
     }
@@ -215,6 +243,7 @@ export default function CategoriasPage() {
                 totalPages={Math.max(totalPaginas, 1)}
                 onPageChange={setPagina}
                 onEdit={puedeEditar ? abrirModalEditar : undefined}
+                onDelete={puedeEliminar ? abrirConfirmacionEliminar : undefined}
                 showActions={puedeEditar || puedeEliminar}
             />
             <Modal
@@ -268,15 +297,15 @@ export default function CategoriasPage() {
                 }
                 message={mensajeConfirmacion()}
                 confirmText={
-    accion?.tipo === 'guardar'
-        ? 'Guardar'
-        : 'Eliminar'
-}
+                    accion?.tipo === 'guardar'
+                        ? 'Guardar'
+                        : 'Eliminar'
+                }
                 variant={
-    accion?.tipo === 'guardar'
-        ? 'filled'
-        : 'danger'
-}
+                    accion?.tipo === 'guardar'
+                        ? 'filled'
+                        : 'danger'
+                }
                 loading={accionPendiente}
             />
 
