@@ -5,6 +5,7 @@ import { useAuthStore } from '@/features/auth/store/auth.store'
 const ENLACES_ADMIN = [
     { to: '/admin/inicio', label: 'Inicio' },
     { to: '/admin/bebidas', label: 'Bebidas' },
+    { to: '/admin/categorias', label: 'Categorias' },
     { to: '/admin/usuarios', label: 'Usuarios' }
 ]
 

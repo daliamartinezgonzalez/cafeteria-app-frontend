@@ -5,6 +5,7 @@ import LoginPage from '@/features/auth/pages/LoginPage'
 import ProtectedRoute from './ProtectedRoute'
 import PermissionRoute from './PermissionRoute'
 import UsuariosPage from '@/features/usuarios/pages/UsuariosPage'
+import CategoriasPage from '@/features/categorias/pages/CategoriasPage'
 
 const ENLACES_PUBLICOS = [
     { to: '/', label: 'Menú', end: true },
@@ -60,7 +61,7 @@ export const router = createBrowserRouter([
                         path: '/admin/categorias',
                         element: (
                             <PermissionRoute permission="categorias.ver">
-                                <div>Gestión de categorías</div>
+                                <CategoriasPage/>
                             </PermissionRoute>
                         )
                     },

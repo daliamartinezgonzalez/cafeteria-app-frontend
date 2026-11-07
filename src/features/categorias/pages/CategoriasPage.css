@@ -1,0 +1,8 @@
+.categorias-page {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.categorias-page .page-header {
+    margin-bottom: 20px;
+}
