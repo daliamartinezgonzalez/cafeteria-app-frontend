@@ -1,3 +1,4 @@
+/* contenedor principal del mensaje */
 .result-dialog {
     display: flex;
     flex-direction: column;
@@ -5,7 +6,7 @@
     gap: 20px;
     text-align: center;
 }
-
+/* icono que representa el resultado */
 .result-dialog__icon {
     display: grid;
     place-items: center;
@@ -13,17 +14,17 @@
     height: 68px;
     border-radius: var(--forma-total);
 }
-
+/* estilo para resultados exitosos */
 .result-dialog__icon--success {
     color: var(--color-espresso);
     background-color: var(--color-salvia);
 }
-
+/* estilo para resultados con error */
 .result-dialog__icon--error {
     color: var(--color-error);
     background-color: var(--color-error-contenedor);
 }
-
+/* mensaje que se muestra al usuario */
 .result-dialog__message {
     max-width: 380px;
     margin: 0;
@@ -31,7 +32,7 @@
     font-size: 0.95rem;
     line-height: 1.6;
 }
-
+/* contenedor del boton de accion */
 .result-dialog__actions {
     display: flex;
     justify-content: flex-end;

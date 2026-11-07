@@ -2,16 +2,11 @@ import { Coffee } from 'lucide-react'
 import LoginForm from '../components/LoginForm'
 import './LoginPage.css'
 
-const FONDO = 'suave'
-const estiloFoto = undefined
-
 export default function LoginPage() {
     return (
-        <main
-            className={`login-page login-page--${FONDO}`}
-            style={FONDO === 'foto' ? estiloFoto : undefined}
-        >
+        <main className="login-page">
             <section className="login-page__container">
+                {/* Icono representativo de la cafetería */}
                 <span className="login-page__badge" aria-hidden="true">
                     <Coffee size={30} />
                 </span>
@@ -24,6 +19,7 @@ export default function LoginPage() {
                     Inicia sesión para acceder al sistema de cafetería.
                 </p>
 
+                {/* Formulario de inicio de sesión */}
                 <div className="login-page__form">
                     <LoginForm />
                 </div>

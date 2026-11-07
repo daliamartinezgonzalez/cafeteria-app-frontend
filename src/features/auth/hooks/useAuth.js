@@ -1,5 +1,5 @@
 import { useAuthStore } from '../store/auth.store'
-
+// Hook para acceder a la información y acciones de autenticación.
 export function useAuth() {
     const token = useAuthStore((state) => state.token)
     const user = useAuthStore((state) => state.user)

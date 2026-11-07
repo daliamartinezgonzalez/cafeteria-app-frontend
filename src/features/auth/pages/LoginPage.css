@@ -1,3 +1,4 @@
+/* Contenedor principal */
 .login-page {
     position: relative;
     display: flex;
@@ -12,7 +13,7 @@
     font-family: var(--fuente);
 }
 
-/*circulo salvia y cuadrado redondeado cafe */
+/* Elementos decorativos del fondo */
 .login-page::before,
 .login-page::after {
     content: '';
@@ -20,6 +21,7 @@
     pointer-events: none;
 }
 
+/* Círculo color salvia */
 .login-page::before {
     top: -90px;
     right: -90px;
@@ -29,6 +31,7 @@
     background-color: var(--color-salvia);
 }
 
+/* Cuadrado redondeado color café */
 .login-page::after {
     bottom: -70px;
     left: -50px;
@@ -39,6 +42,7 @@
     transform: rotate(18deg);
 }
 
+/* Tarjeta que contiene el formulario de inicio de sesión */
 .login-page__container {
     position: relative;
     z-index: 1;
@@ -54,6 +58,7 @@
     animation: login-page-entrada 0.55s var(--resorte) both;
 }
 
+/* Icono representativo de la cafetería */
 .login-page__badge {
     display: flex;
     align-items: center;
@@ -65,6 +70,7 @@
     color: var(--color-sobre-primario);
 }
 
+/* Título y descripción de la página */
 .login-page__title {
     margin: 20px 0 0;
     color: var(--color-espresso);
@@ -83,39 +89,13 @@
     text-align: center;
 }
 
+/* Contenedor del formulario */
 .login-page__form {
     width: 100%;
     margin-top: 32px;
 }
 
-/* Variante*/
-.login-page--fuerte {
-    background-color: var(--color-cafe);
-}
-
-.login-page--fuerte::before {
-    background-color: var(--color-durazno);
-}
-
-.login-page--fuerte::after {
-    background-color: var(--color-espresso);
-}
-
-/* Variante para foto */
-.login-page--foto {
-    background-color: var(--color-espresso);
-    background-image:
-        linear-gradient(rgba(33, 26, 21, 0.55), rgba(33, 26, 21, 0.55)),
-        var(--login-foto);
-    background-position: center;
-    background-size: cover;
-}
-
-.login-page--foto::before,
-.login-page--foto::after {
-    display: none;
-}
-
+/* Animación de entrada de la tarjeta */
 @keyframes login-page-entrada {
     from {
         opacity: 0;
@@ -127,6 +107,7 @@
     }
 }
 
+/* Ajustes para pantallas pequeñas */
 @media (max-width: 480px) {
     .login-page__container {
         padding: 32px 20px 28px;

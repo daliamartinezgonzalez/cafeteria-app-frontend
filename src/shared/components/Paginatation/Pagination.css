@@ -1,3 +1,4 @@
+/* contenedor principal de la paginacion */
 .pagination {
     display: flex;
     flex-wrap: wrap;
@@ -8,24 +9,24 @@
     padding: 16px 24px;
     font-family: var(--fuente);
 }
-
+/* resumen de los registros mostrados */
 .pagination__summary {
     margin: 0;
     color: var(--color-sobre-superficie-variante);
     font-size: 13px;
 }
-
+/* selector de registros por pagina */
 .pagination__page-size {
     display: flex;
     align-items: center;
     gap: 8px;
 }
-
+/* texto del selector */
 .pagination__page-size-label {
     color: var(--color-sobre-superficie-variante);
     font-size: 13px;
 }
-
+/* campo para elegir la cantidad de registros */
 .pagination__select {
     min-width: 72px;
     min-height: 40px;
@@ -39,19 +40,18 @@
     cursor: pointer;
     transition: border-color 0.2s var(--estandar);
 }
-
+/* cambia el borde al pasar el cursor */
 .pagination__select:hover {
     border-color: var(--color-espresso);
 }
-
+/* indicador al seleccionar los controles con el teclado */
 .pagination__select:focus-visible,
 .pagination__button:focus-visible,
 .pagination__page:focus-visible {
     outline: 3px solid var(--color-hielo);
     outline-offset: 2px;
 }
-
-/* Anterior, números y Siguiente */
+/* contenedor de los botones de paginacion */
 .pagination__controls {
     display: flex;
     flex-wrap: wrap;
@@ -60,7 +60,7 @@
     gap: 8px;
     width: 100%;
 }
-
+/* botones de anterior y siguiente */
 .pagination__button {
     min-height: 40px;
     padding: 0 18px;
@@ -76,28 +76,27 @@
         background-color 0.2s var(--estandar),
         transform 0.3s var(--resorte);
 }
-
+/* cambia el fondo al pasar el cursor */
 .pagination__button:hover:not(:disabled) {
     background-color: color-mix(in srgb, var(--color-contenedor-secundario) 80%, var(--color-primario));
 }
-
+/* efecto al presionar el boton */
 .pagination__button:active:not(:disabled) {
     transform: scale(0.94);
 }
-
+/* apariencia de los botones deshabilitados */
 .pagination__button:disabled {
     background-color: transparent;
     color: color-mix(in srgb, var(--color-espresso) 38%, white);
     cursor: not-allowed;
 }
-
+/* contenedor de los numeros de pagina */
 .pagination__pages {
     display: flex;
     align-items: center;
     gap: 4px;
 }
-
-/* Páginas circulares; la activa cambia a una forma redondeada y se rellena */
+/* botones de cada pagina */
 .pagination__page {
     display: flex;
     align-items: center;
@@ -119,22 +118,22 @@
         border-radius 0.35s var(--resorte),
         transform 0.3s var(--resorte);
 }
-
+/* cambia el fondo de las paginas al pasar el cursor */
 .pagination__page:hover:not(.pagination__page--active) {
     background-color: var(--color-contenedor-secundario);
     color: var(--color-sobre-contenedor-secundario);
 }
-
+/* efecto al presionar una pagina */
 .pagination__page:active {
     transform: scale(0.9);
 }
-
+/* estilo de la pagina seleccionada */
 .pagination__page--active {
     border-radius: var(--forma-md);
     background-color: var(--color-primario);
     color: var(--color-sobre-primario);
 }
-
+/* puntos que indican paginas intermedias */
 .pagination__ellipsis {
     display: flex;
     align-items: center;
@@ -143,8 +142,7 @@
     color: var(--color-sobre-superficie-variante);
     font-size: 13px;
 }
-
-/* Móvil: los números arriba y Anterior / Siguiente debajo */
+/* ajustes para pantallas pequeñas */
 @media (max-width: 640px) {
     .pagination {
         justify-content: center;
@@ -163,7 +161,7 @@
         height: 36px;
     }
 }
-
+/* evita las animaciones cuando se prefiere reducir el movimiento */
 @media (prefers-reduced-motion: reduce) {
     .pagination__select,
     .pagination__button,

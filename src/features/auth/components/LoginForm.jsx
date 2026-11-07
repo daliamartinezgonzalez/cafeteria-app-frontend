@@ -10,7 +10,7 @@ import './LoginForm.css'
 export default function LoginForm() {
     const loginMutation = useLogin()
     const [mostrarPassword, setMostrarPassword] = useState(false)
-
+    // para configurar el formulario y validar los campos mediante el esquema de Zod.
     const {
         register,
         handleSubmit,
@@ -18,7 +18,7 @@ export default function LoginForm() {
     } = useForm({
         resolver: zodResolver(loginSchema)
     })
-
+    // para obtener el error cuando falla la solicitud al backend
     const errorLogin = loginMutation.isError
         ? getApiError(loginMutation.error)
         : {}

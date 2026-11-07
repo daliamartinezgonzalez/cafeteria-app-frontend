@@ -1,3 +1,4 @@
+/* contenedor principal de la tabla */
 .data-table {
     display: flex;
     flex-direction: column;
@@ -9,6 +10,7 @@
     font-family: var(--fuente);
 }
 
+/* permite desplazar la tabla horizontalmente */
 .data-table__scroll {
     overflow-x: auto;
 }
@@ -20,7 +22,7 @@
     border-spacing: 0;
 }
 
-/* Encabezado */
+/* encabezado de la tabla */
 .data-table__head-row {
     height: 56px;
     background-color: color-mix(in srgb, var(--color-salvia) 35%, var(--color-superficie));
@@ -41,7 +43,7 @@
     text-align: center;
 }
 
-/* Filas */
+/* filas y celdas */
 .data-table__row {
     height: 72px;
     transition: background-color 0.2s var(--estandar);
@@ -60,6 +62,7 @@
     border-bottom: none;
 }
 
+/* cambia el fondo de la fila al pasar el cursor */
 .data-table__body .data-table__row:not(.data-table__row--empty):hover {
     background-color: color-mix(in srgb, var(--color-cafe) 6%, transparent);
 }
@@ -68,6 +71,7 @@
     text-align: center;
 }
 
+/* mensaje cuando no hay registros */
 .data-table__empty {
     padding: 48px 24px;
     color: var(--color-texto-suave);
@@ -76,7 +80,7 @@
     text-align: center;
 }
 
-/* Acciones por fila */
+/* botones de acciones de cada fila */
 .data-table__actions {
     display: inline-flex;
     align-items: center;
@@ -113,6 +117,7 @@
     transform: scale(0.88);
 }
 
+/* indicador al seleccionar los controles con el teclado */
 .data-table__action:focus-visible,
 .data-table__pager-button:focus-visible,
 .data-table__page:focus-visible,
@@ -121,6 +126,7 @@
     outline-offset: 2px;
 }
 
+/* estilo para las acciones de eliminar */
 .data-table__action--danger {
     color: var(--color-error);
 }
@@ -130,7 +136,7 @@
     color: var(--color-sobre-error-contenedor);
 }
 
-/* Pie: resumen, registros por página y paginación */
+/* pie de la tabla con resumen y paginación */
 .data-table__footer {
     display: flex;
     align-items: center;
@@ -142,12 +148,14 @@
     background-color: color-mix(in srgb, var(--color-durazno) 25%, var(--color-superficie));
 }
 
+/* resumen de los registros mostrados */
 .data-table__summary {
     margin: 0;
     color: var(--color-texto-suave);
     font-size: 13px;
 }
 
+/* selector de registros por página */
 .data-table__page-size {
     display: flex;
     align-items: center;
@@ -177,6 +185,7 @@
     border-color: var(--color-cafe);
 }
 
+/* botones para cambiar de página */
 .data-table__pager {
     display: flex;
     align-items: center;
@@ -213,13 +222,14 @@
     cursor: not-allowed;
 }
 
+/* lista de números de página */
 .data-table__pages {
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
-/* Páginas */
+/* botones de cada página */
 .data-table__page {
     display: flex;
     align-items: center;
@@ -251,12 +261,14 @@
     transform: scale(0.9);
 }
 
+/* página seleccionada */
 .data-table__page--active {
     border-radius: var(--forma-md);
     background-color: var(--color-cafe);
     color: var(--color-sobre-primario);
 }
 
+/* puntos que indican páginas intermedias */
 .data-table__ellipsis {
     display: flex;
     align-items: center;
@@ -266,7 +278,7 @@
     font-size: 13px;
 }
 
-/* Pantallas pequeñas: cada fila se convierte en una tarjeta */
+/* ajustes para mostrar las filas como tarjetas en pantallas pequeñas */
 @media (max-width: 720px) {
     .data-table__table {
         min-width: 0;
@@ -299,7 +311,6 @@
         border: 1px solid var(--color-borde-suave);
         border-radius: var(--forma-lg);
     }
-
     .data-table__cell {
         display: flex;
         align-items: center;
@@ -308,7 +319,7 @@
         padding: 10px 16px;
         text-align: right;
     }
-
+    /* muestra el nombre de cada columna junto a su dato */
     .data-table__cell::before {
         content: attr(data-label);
         color: var(--color-texto-suave);
@@ -342,8 +353,7 @@
         justify-content: center;
     }
 }
-
-/* Accesibilidad */
+/* evita las animaciones cuando el usuario prefiere reducirlas */
 @media (prefers-reduced-motion: reduce) {
     .data-table__row,
     .data-table__action,

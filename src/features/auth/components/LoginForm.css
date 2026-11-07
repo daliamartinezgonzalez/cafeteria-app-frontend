@@ -1,3 +1,4 @@
+/* Contenedor principal del formulario */
 .login-form {
     display: flex;
     flex-direction: column;
@@ -5,14 +6,14 @@
     gap: 20px;
     font-family: var(--fuente);
 }
-
+/* Organización de cada campo del formulario */
 .login-form__field {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 8px;
 }
-
+/* Estilos de las etiquetas */
 .login-form__label {
     padding-left: 4px;
     color: var(--color-texto-suave);
@@ -20,7 +21,7 @@
     font-weight: 500;
     letter-spacing: 0.02em;
 }
-
+/* Contenedor del input y su icono */
 .login-form__input-container {
     display: flex;
     align-items: center;
@@ -36,33 +37,32 @@
         box-shadow 0.2s var(--estandar),
         border-radius 0.35s var(--resorte);
 }
-
+/* Cambia el borde cuando se pasa el cursor */
 .login-form__input-container:hover {
     border-color: var(--color-espresso);
 }
-
+/* Resalta el campo cuando alguno de sus elementos tiene el foco */
 .login-form__input-container:focus-within {
     border-color: var(--color-cafe);
     box-shadow: 0 0 0 1px var(--color-cafe);
     border-radius: var(--forma-xl);
 }
-
+/* Estilos del contenedor cuando el campo tiene un error */
 .login-form__input-container--error,
 .login-form__input-container--error:hover,
 .login-form__input-container--error:focus-within {
     border-color: var(--color-error);
 }
-
 .login-form__input-container--error:focus-within,
 .login-form__input-container--error {
     box-shadow: 0 0 0 1px var(--color-error);
 }
-
+/* Icono que acompaña al campo */
 .login-form__icon {
     flex-shrink: 0;
     color: var(--color-cafe);
 }
-
+/* Campo donde el usuario escribe */
 .login-form__input {
     width: 100%;
     min-width: 0;
@@ -73,12 +73,11 @@
     font-family: inherit;
     font-size: 16px;
 }
-
+/* Texto que aparece cuando el campo está vacío */
 .login-form__input::placeholder {
     color: var(--color-placeholder);
 }
-
-/* Botón circular */
+/* Botón para mostrar u ocultar la contraseña */
 .login-form__password-toggle {
     display: flex;
     flex-shrink: 0;
@@ -96,20 +95,17 @@
         background-color 0.2s var(--estandar),
         transform 0.3s var(--resorte);
 }
-
 .login-form__password-toggle:hover {
     background-color: color-mix(in srgb, var(--color-cafe) 10%, transparent);
 }
-
 .login-form__password-toggle:active {
     transform: scale(0.88);
 }
-
 .login-form__password-toggle:focus-visible {
     outline: 3px solid var(--color-hielo);
     outline-offset: 1px;
 }
-
+/* Mensaje de error debajo de cada campo */
 .login-form__error {
     margin: 0;
     padding-left: 4px;
@@ -117,7 +113,7 @@
     font-size: 12px;
     line-height: 1.4;
 }
-
+/* Mensaje de error devuelto por el servidor */
 .login-form__server-error {
     padding: 14px 18px;
     border-radius: var(--forma-md);
@@ -127,8 +123,7 @@
     line-height: 1.4;
     text-align: center;
 }
-
-/* Botón principal */
+/* Botón para enviar el formulario */
 .login-form__submit {
     position: relative;
     display: flex;
@@ -152,7 +147,7 @@
         transform 0.35s var(--resorte),
         background-color 0.2s var(--estandar);
 }
-
+/* Efecto de iluminación al pasar el cursor */
 .login-form__submit::after {
     content: '';
     position: absolute;
@@ -162,37 +157,35 @@
     pointer-events: none;
     transition: opacity 0.2s var(--estandar);
 }
-
 .login-form__submit:hover:not(:disabled)::after {
     opacity: 0.1;
 }
-
+/* Efecto al presionar el botón */
 .login-form__submit:active:not(:disabled) {
     border-radius: var(--forma-md);
     transform: scale(0.97);
 }
-
+/* Indicador visual al navegar con el teclado */
 .login-form__submit:focus-visible {
     outline: 3px solid var(--color-hielo);
     outline-offset: 3px;
 }
-
+/* Apariencia del botón cuando está deshabilitado */
 .login-form__submit:disabled {
     background-color: color-mix(in srgb, var(--color-espresso) 12%, white);
     color: color-mix(in srgb, var(--color-espresso) 38%, white);
     cursor: not-allowed;
 }
-
+/* Animación del indicador de carga */
 .login-form__spinner {
     animation: login-form-girar 0.9s linear infinite;
 }
-
 @keyframes login-form-girar {
     to {
         transform: rotate(360deg);
     }
 }
-
+/* Ajustes para pantallas pequeñas */
 @media (max-width: 480px) {
     .login-form {
         gap: 18px;
@@ -202,7 +195,7 @@
         min-height: 54px;
     }
 }
-
+/* Reduce las transiciones cuando el usuario lo tiene configurado */
 @media (prefers-reduced-motion: reduce) {
     .login-form__input-container,
     .login-form__password-toggle,

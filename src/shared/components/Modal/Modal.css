@@ -1,3 +1,4 @@
+/* fondo que cubre la pantalla detrás del modal */
 .modal__backdrop {
     position: fixed;
     inset: 0;
@@ -10,7 +11,7 @@
     backdrop-filter: blur(4px);
     animation: modal-fade-in 180ms ease-out;
 }
-
+/* contenedor principal del modal */
 .modal {
     display: flex;
     flex-direction: column;
@@ -24,6 +25,7 @@
     animation: modal-enter 280ms var(--resorte);
 }
 
+/* tamaños del modal */
 .modal--small {
     max-width: 420px;
 }
@@ -36,6 +38,7 @@
     max-width: 760px;
 }
 
+/* encabezado del modal */
 .modal__header {
     display: flex;
     align-items: flex-start;
@@ -45,11 +48,11 @@
     background-color: color-mix(in srgb, var(--color-salvia) 45%, var(--color-superficie));
     border-bottom: 1px solid var(--color-borde-suave);
 }
-
+/* contenedor del titulo y la descripcion */
 .modal__heading {
     min-width: 0;
 }
-
+/* titulo del modal */
 .modal__title {
     margin: 0;
     color: var(--color-espresso);
@@ -57,13 +60,13 @@
     font-weight: 650;
     line-height: 1.3;
 }
-
+/* descripcion del modal */
 .modal__description {
     margin: 8px 0 0;
     color: var(--color-texto-suave);
     font-size: 0.9rem;
 }
-
+/* boton para cerrar el modal */
 .modal__close {
     display: grid;
     flex-shrink: 0;
@@ -81,23 +84,23 @@
         border-radius 180ms var(--resorte),
         transform 180ms ease;
 }
-
+/* efecto al pasar el cursor por el boton de cerrar */
 .modal__close:hover {
     background-color: var(--color-durazno);
     border-radius: var(--forma-md);
     transform: rotate(8deg);
 }
-
+/* indicador al seleccionar el boton con el teclado */
 .modal__close:focus-visible {
     outline: 3px solid var(--color-hielo);
     outline-offset: 3px;
 }
-
+/* contenido principal del modal */
 .modal__content {
     padding: 24px;
     overflow-y: auto;
 }
-
+/* pie del modal para los botones de accion */
 .modal__footer {
     display: flex;
     justify-content: flex-end;
@@ -108,7 +111,7 @@
     background-color: color-mix(in srgb, var(--color-durazno) 22%, var(--color-superficie));
     border-top: 1px solid var(--color-borde-suave);
 }
-
+/* animacion de aparicion del fondo */
 @keyframes modal-fade-in {
     from {
         opacity: 0;
@@ -117,7 +120,7 @@
         opacity: 1;
     }
 }
-
+/* animacion de entrada del modal */
 @keyframes modal-enter {
     from {
         opacity: 0;
@@ -128,7 +131,7 @@
         transform: translateY(0) scale(1);
     }
 }
-
+/* ajustes para pantallas pequeñas */
 @media (max-width: 600px) {
     .modal__backdrop {
         align-items: flex-end;
@@ -149,7 +152,7 @@
         padding: 16px 20px;
     }
 }
-
+/* evita las animaciones cuando se prefiere reducir el movimiento */
 @media (prefers-reduced-motion: reduce) {
     .modal__backdrop,
     .modal {

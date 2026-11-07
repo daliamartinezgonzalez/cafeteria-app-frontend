@@ -1,3 +1,4 @@
+/* contenedor principal del encabezado */
 .page-header {
     display: flex;
     flex-wrap: wrap;
@@ -6,11 +7,11 @@
     gap: 16px;
     font-family: var(--fuente);
 }
-
+/* contenedor del titulo y subtitulo */
 .page-header__text {
     min-width: 0;
 }
-
+/* titulo de la pagina */
 .page-header__title {
     margin: 0;
     color: var(--color-espresso);
@@ -19,14 +20,14 @@
     line-height: 1.15;
     letter-spacing: -0.01em;
 }
-
+/* texto debajo del titulo */
 .page-header__subtitle {
     margin-top: 4px;
     color: var(--color-texto-suave);
     font-size: 14px;
     line-height: 1.5;
 }
-
+/* ajustes para pantallas pequeñas */
 @media (max-width: 480px) {
     .page-header {
         align-items: stretch;
